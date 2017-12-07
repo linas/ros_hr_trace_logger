@@ -1,11 +1,16 @@
+#!/usr/bin/env python
+
 import datetime as dt
 import traceback
+import os
 import rospy
 from chatbot.db import get_mongo_client
 from hr_msgs.msg import TTS
 from hr_msgs.msg import EmotionState
 from hr_msgs.msg import SetGesture
+import logging
 
+logger = logging.getLogger('hr.ros_mongo.mongo_logger')
 ROBOT_NAME = os.environ.get('NAME', 'default')
 
 class MongoLogger(object):
@@ -34,7 +39,7 @@ class MongoLogger(object):
             'RunID': self.run_id,
             'Name': msg.name,
             'Magnitude': msg.magnitude,
-            'Duration': msg.duration,
+            'Duration': msg.duration.nsecs,
         }
         if self.mongoclient is not None and self.mongoclient.client is not None:
             collection = self.mongoclient.client[ROBOT_NAME]['blender']['emotion_state']
@@ -55,5 +60,5 @@ class MongoLogger(object):
 
 if __name__ == '__main__':
     rospy.init_node('mongo_logger')
-    logger = MongoLogger()
+    MongoLogger()
     rospy.spin()
