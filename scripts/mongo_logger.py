@@ -29,7 +29,7 @@ class MongoLogger(object):
             result = collection.insert_one(record)
             logger.info("Added record to mongodb")
         except Exception as ex:
-            self.mongoclient.client = None
+            self.mongoclient = None
             logger.error(traceback.format_exc())
             logger.warn("Deactivate mongodb")
 
@@ -41,8 +41,8 @@ class MongoLogger(object):
             'Magnitude': msg.magnitude,
             'Duration': msg.duration.nsecs,
         }
-        if self.mongoclient is not None and self.mongoclient.client is not None:
-            collection = self.mongoclient.client[ROBOT_NAME]['blender']['emotion_state']
+        if self.mongoclient is not None:
+            collection = self.mongoclient[ROBOT_NAME]['blender']['emotion_state']
             self._log(collection, record)
 
     def log_gesture(self, msg):
@@ -54,8 +54,8 @@ class MongoLogger(object):
             'Speed': msg.speed,
             'Magnitude': msg.magnitude,
         }
-        if self.mongoclient is not None and self.mongoclient.client is not None:
-            collection = self.mongoclient.client[ROBOT_NAME]['blender']['gesture']
+        if self.mongoclient is not None:
+            collection = self.mongoclient[ROBOT_NAME]['blender']['gesture']
             self._log(collection, record)
 
 if __name__ == '__main__':
