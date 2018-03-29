@@ -37,7 +37,7 @@ class MongoLogger(object):
 
     def log_emotion(self, msg):
         record = {
-            'Datetime': dt.datetime.now(),
+            'Datetime': dt.datetime.utcnow(),
             'RunID': self.run_id,
             'Name': msg.name,
             'Magnitude': msg.magnitude,
@@ -49,7 +49,7 @@ class MongoLogger(object):
 
     def log_gesture(self, msg):
         record = {
-            'Datetime': dt.datetime.now(),
+            'Datetime': dt.datetime.utcnow(),
             'RunID': self.run_id,
             'Name': msg.name,
             'Repeat': msg.repeat,
@@ -61,7 +61,7 @@ class MongoLogger(object):
             self._log(collection, record)
 
     def log_faces(self, msg):
-        time = dt.datetime.now()
+        time = dt.datetime.utcnow()
         for face in msg.faces:
             record = {
                 'Datetime': time,
