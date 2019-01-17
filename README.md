@@ -9,7 +9,7 @@ It subscribes to several ROS topics:
 * The blender face expression and gesture nodes (i.e. the stream of animations that
 the robot s performing), and
 
-* The face-detection node, wich publishes when a face is observed and tracked, and
+* The face-detection node, which publishes when a face is observed and tracked, and
 it's 3D location. (Facial recognition is not used; names of faces are not recorded).
 
 * Chat content is not logged.
