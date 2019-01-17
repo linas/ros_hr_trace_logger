@@ -1,8 +1,8 @@
 # ros_mongo
 Interaction trace logger for robot I/O subsystem 
 
-This is a suerp-minimal logger of interaction state for the humanoid robot. It is useful
-only for debugging failed human-robot interactions.
+This is a super-minimal logger of interaction state for the humanoid robot. It is useful
+only for debugging failed (or successful) human-robot interactions.
 
 It subscribes to several ROS topics:
 
@@ -11,6 +11,8 @@ the robot s performing, and
 
 * The face-detection node, wich publishes when a face is observed and tracked, and
 it's 3D location. (Facial recognition is not used; names of faces are not recorded).
+
+* Chat content is not logged.
 
 The messages are then recorded to a Mongo DB instance.
 
