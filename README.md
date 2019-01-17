@@ -1,4 +1,4 @@
-# ros_mongo
+# ros_hr_trace_logger
 Interaction trace logger for robot I/O subsystem 
 
 This is a super-minimal logger of interaction state for the humanoid robot. It is useful
