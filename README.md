@@ -1,5 +1,5 @@
 # ros_hr_trace_logger
-Interaction trace logger for robot I/O subsystem 
+Interaction trace logger for Sophia robot I/O subsystem 
 
 This is a super-minimal logger of interaction state for the humanoid robot. It is useful
 only for debugging failed (or successful) human-robot interactions.
